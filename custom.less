@@ -1,0 +1,504 @@
+/* Enter your custom LESS CSS code 
+ * to further customize the interface */
+
+@import url("chrome://komodo/skin/global/colors.less");
+@import url("resource://profile/colors.less");
+
+@fontstack: Consolas,Courier New,Courier,monaco,monospace; 
+
+#komodo-box
+{
+	border-top: 1px solid @border !important;
+}
+
+// Move vertical tabs to top
+.tabs-left {
+    visibility: collapse;
+}
+
+// Fix input color in remote filepicker
+input {
+	color: @foreground !important;
+}
+
+// Darken Tooltip
+tooltip:not(.notify-panel) {
+	background: @background !important;
+	color: @foreground !important;
+	background-image: none !important;
+	-moz-appearance: none !important;
+	font-size: 12px !important;
+}
+
+// Fix for top menu ( when you press alt )
+#toolbox_main {
+	#toolbar-menubar,
+	#menubar-items,
+	#main-menubar {
+		background-color: @background !important;
+	}
+}
+
+// Change folder in the breadcrumb
+#komodo-editor-vbox [anonid="breadcrumbBar"] .breadcrumb.folder .breadcrumb-icon {
+	background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder2.svg?size=12") !important;
+}
+
+// Add folders to places widget and remove existing icon
+#placesViewbox_placesWrapper {
+	tree {
+		treechildren {
+			&::-moz-tree-twisty {
+				background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder2.svg?size=12") !important;
+				background-size: 12px !important;
+				background-position: left 2px;
+			}
+			&::-moz-tree-twisty(open) {
+				background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder-open.svg?size=12") !important;
+			}
+			&::-moz-tree-image(folder_open),
+			&::-moz-tree-image(folder_closed) {
+				list-style-image: none !important;
+				width: 4px !important;
+			}
+		}
+	}
+}
+
+/* toolbox2 styles */
+treechildren#toolbox2-hierarchy-treebody {
+	&::-moz-tree-twisty {
+		background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder2.svg?size=12") !important;
+		padding-left: 5px !important;
+		background-size: 12px 12px !important;
+		background-position: left center !important; 
+	}
+	&::-moz-tree-twisty(open) {
+		background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder-open.svg?size=12") !important;
+		padding-left: 5px !important;
+		background-size: 12px 12px !important;
+		background-position: left center !important; 
+	}
+	&::-moz-tree-image(container) {
+		opacity: 0 !important;
+	}
+}
+
+// Add folders and file icons to remote file/folder browser
+#directoryTree {
+	treechildren {
+		&::-moz-tree-image {
+		height: 12px;
+		width: 12px;
+		}
+		treeitem[type="folder"] {
+			background-image: url("koicon://ko-svg/chrome/icomoon/skin/folder2.svg?size=12") !important;
+			background-size: 12px !important;
+		}
+	}
+	treechildren::-moz-tree-image(remotefolder) {
+		list-style-image: url('koicon://ko-svg/chrome/icomoon/skin/folder2.svg?size=12') !important;
+	}
+	
+	treechildren::-moz-tree-image(remotefile) {
+		list-style-image: url('koicon://ko-svg/chrome/icomoon/skin/file5.svg?size=11');
+	}
+}
+
+
+// Add some more padding to the vertical tabs
+ko-pane[type="vertical"] .pane-tabs-container tabs tab {
+	padding: 7px 5px !important;
+	border-bottom: 1px solid @border !important;
+	transition: all 300ms ease;
+	&:hover {
+		background:  darken(@background, 4%) !important;
+	}
+	&[selected="true"] {
+		background: darken(@background, 6%) !important;
+	}
+}
+
+#komodo_main statusbar statusbarpanel > label,
+#komodo_main statusbar .toolbarbutton-text,
+#komodo_main statusbar label[anonid="section-label"] {
+  opacity: 1 !important;
+}
+
+// Styling horizontal tabs
+ko-pane[type="horizontal"] .pane-tabs-container tabs tab {
+	border-right: 1px solid @border !important;
+	transition: all 300ms ease;
+	&:hover {
+		background:  darken(@background, 4%) !important;
+	}
+	&[selected="true"] {
+		background: darken(@background, 6%) !important;
+	}
+}
+
+titlebar {
+	background: @background !important;
+}
+
+#komodo_main ko-pane#workspace_bottom_area tabs {
+	border-bottom: 1px solid @border !important;
+}
+
+#komodo_main ko-pane[type="icons"]#workspace_bottom_area tabs {
+	 tab {
+			max-width: 77px;
+			border-right: 1px solid @border !important;
+		}
+}
+
+
+// A bit more padding to the menu
+menupopup menuitem,
+menupopup menu {
+  padding: 5px !important;
+}
+
+// Add a little border arround menus for visuale difference
+window,
+alert,
+prompt,
+prefwindow,
+dialog,
+menupopup {
+	border: 1px solid darken(@background, 10%) !important;
+}
+
+dialog {
+	resize: both !important;
+	-moz-window-dragging: drag !important;
+}
+
+// A little button transition 
+button {
+	transition: all 200ms ease;
+	border-radius: 0 !important;
+	background: #000;
+}
+
+// Dimmed the outline
+button:focus {
+	outline-color: lighten(@border, 10%) !important;
+}
+
+// Add some text shadow for more readable hover
+button:hover {
+	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+}
+
+// Add default padding to the sidepanes
+.toolbar-box {
+    padding: 2px !important;
+}
+
+
+// A litle bit more padding to the document tabs
+#editorviewbox tabs
+{
+	min-height: 27px !important;
+	border-bottom: 1px solid @border !important;
+	background: darken(@background, 2%) !important;
+	padding-left: 3px !important;
+    tab {
+        padding: 0px 7px 0px 8px !important;
+								border-right: 1px solid darken(@background, 1%) !important;
+								border-left: 1px solid darken(@background, 1%) !important;
+								background: lighten(@background, 8%) !important;
+								transition: all 300ms ease;
+								border-top-left-radius: 5px 7px !important;
+								border-top-right-radius: 5px 7px !important;
+								margin-left: -3px !important;
+								min-height: 27px !important;
+								height: 27px !important;
+								&:before {
+									content: '';
+									border-color : transparent #ddd transparent transparent;
+										-webkit-transform : rotate(48deg);
+										left: -23px;
+								}
+								&:hover {
+									background:  lighten(@background, 12%) !important;
+									//border-bottom-color: transparent !important;
+								}
+								&[selected="true"] {
+									background: lighten(@background, 12%) !important;
+									//border-bottom-color: transparent !important;
+								}
+    }
+}
+
+#scc-tabs tabs {
+	tab {
+		border-right: 1px solid @border !important;
+		background: darken(@background, 1%) !important;
+		transition: all 300ms ease;
+		border-bottom: none !important;
+		&:hover {
+			background:  darken(@background, 4%) !important;
+		}
+		&[selected="true"] {
+			background: darken(@background, 6%) !important;
+		}
+    }
+}
+
+// A litle touch to the breadcrumbs
+[anonid="breadcrumbBar"] {
+	.breadcrumb .breadcrumb-arrow {
+		margin: -4px 5px 0 !important;
+		&:before {
+			color: @foreground !important;
+			content: "\edbd" !important;
+			font-size: 7px !important;
+		}
+	}
+}
+
+.widget_splitter[orient="vertical"],
+#placesSubpanelSplitter[orient="vertical"] {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	&:hover {
+		background-color: fade(@border, 20%) !important;
+	}
+}
+
+// Add border to minimap
+#tabbed-view tabpanel minimap {
+	border-left: 1px solid darken(@border, 5%) !important;
+}
+
+// Small fix for check configuration screen: help > check configuration
+dialog#dialog-featurecontrolpanel {
+    background-color: @background !important;
+    vbox {
+        background-color: lighten(@background, 5%) !important;
+    }
+    hbox[style*='background-color: #E7E3DE;'] {
+        background-color: darken(@background, 5%) !important;
+    }
+}
+
+// some more padding on default menu
+#menubar_main > menu {
+    padding: 8px 4px 4px !important;
+}
+
+// Fix: Color missing for Web-notifications
+.alertBox {
+    background: darken(@background, 7%) !important;
+    border: darken(@background, 12%) !important;
+}
+
+.alertImageBox {
+    background: darken(@background, 7%) !important;
+    border: darken(@background, 12%) !important;
+}
+
+.alertTextBox, .alertCloseBox {
+    background: darken(@background, 7%) !important;
+}
+
+.notify-panel {
+	 description
+    {
+       color: @state-foreground !important;
+	   opacity: 1 !important;
+	}
+}
+
+scrollbar {
+    thumb {
+        background: darken(@background, 3%) !important;
+		opacity: 0.5;
+		transition: all 300ms ease;
+		&:hover,
+		&:focus,
+		&:active {
+			opacity: 1;
+		}
+    }
+}
+
+dialog, :root.dialog, :root.pref-window {
+    scrollbar thumb {
+        background: darken(@background, 3%) !important;
+		opacity: 0.5;
+		&:hover,
+		&:focus,
+		&:active {
+			opacity: 1;
+		}
+    }
+}
+
+#commando-panel {
+    scrollbar thumb {
+        background: darken(@background, 3%) !important;
+		opacity: 0.5;
+		&:hover,
+		&:focus,
+		&:active {
+			opacity: 1;
+		}
+    }
+}
+
+:root.special scrollbar thumb {
+    background: darken(@background, 3%) !important;
+	opacity: 0.5;
+	&:hover,
+	&:focus,
+	&:active {
+		opacity: 1;
+	}
+}
+
+
+
+#openfilesListbox richlistitem.group-item {
+    border-bottom: 1px solid @foreground !important;
+	label {
+		color: @foreground-special !important;
+	}
+}
+
+#windowButtons {
+	margin-top: -8px !important;
+	margin-right: -8px !important;
+	toolbarbutton:not(.eye-icon):not(.menu-icon) {
+		width: 38px !important;
+		height: 26px !important;
+		&#close {
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4QIEExEudQGVRgAAAKBJREFUOMvtlL0KwzAMhPN2dkqGFvqqmbvoDYSfIBraQSCMQWgw7pQMofRXU/E3H8dxOjQMnf9DRGZP3YaqxpQSP9MgYss5Hz5OzcwTIjZX0xUzC3tzRGxEdPy5bzMLANBUdUwpca01uh3TzIKINCI6ua4EAG7LspwBoHmabodaa3ExZeZpvxYAuLokfTTFr5KXUmZVjS80o4hc+p/qvMcdt5qGFrxZgr8AAAAASUVORK5CYII=') !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
+			&:hover, &:focus, &:active {
+				background-color: #E81123 !important;
+				transform: none !important;
+			}
+		}
+		&#max {
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4QIEEBEt7k56pQAAAFRJREFUOMtjFBISYqAFYGKgERg1GA5YCCno6+v7j0++qKiIkSyD8WnGZykLMS7FZgAuy4hyMTkuHU1u1DOYUDizkGswRamCmNjHBRhHi81Rg+lnMAB4wBn1vDkIggAAAABJRU5ErkJggg==') !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
+			&:hover, &:focus, &:active {
+				background-color: #404040 !important;
+				transform: none !important;
+			}
+		}
+		&#min {
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4QIEEBIB97tFhQAAADVJREFUOMtjFBISYqAFYGKgERg1eNTg4WAwCy6Jvr6+/8QYUFRUxIhNnHE0S48aPGrwcDIYADCiBJmF7cYAAAAAAElFTkSuQmCC') !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
+			&:hover, &:focus, &:active {
+				background-color: #404040 !important;
+				transform: none !important;
+			}
+		}
+		&:before {
+			display: none !important;
+		}
+	}
+}
+
+#komodo_main {
+	#toolbox_main {
+		#windowButtons {
+			margin-right: -5px !important;
+			margin-top: -20px !important;
+			toolbarbutton:not(.eye-icon):not(.menu-icon) {
+				width: 40px !important;
+			}
+		}
+	}
+	&[sizemode='normal'] {
+		#toolbox_main {
+			#windowButtons {
+				margin-top: -10px !important;
+			}
+		}
+	}
+	&[show-toolbar="false"] {
+		#toolbox_main {
+			#windowButtons {
+				margin-top: -6px !important;
+			}
+		}
+	}
+}
+
+dialog {
+	#windowButtons {
+		margin-top: 0 !important;
+		margin-right: 0 !important;
+	}
+}
+
+.file-publishing-status-icon {
+	font-size: 7px !important;
+	&:before {
+		content: '\ee73' !important;
+		line-height: 7px;
+	}
+}
+
+tab[label="New Tab"] {
+	.tab-icons:first-child:before {
+		content: '\ed5b';
+		font-family: 'icomoon' !important;
+	}
+}
+
+tab[view-type="browser"] {
+	&[label*="PNG"],
+	&[label*="JPEG"] {
+		.tab-icons:first-child:before {
+			content: '\f06e' !important;
+		}
+	}
+}
+
+view[type="quickstart"] {
+	.editor-field {
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAYAAABBV8wuAAAAR0lEQVR42oXOsQkAQQhE0StKRQ20/6o8RjBZcDd40R/ELyIKVLUxc9uDuxfMgIjgEsysQERaZsIlnCdmuId5bwbvcJyYwR5+DGh4DQAjsYAAAAAASUVORK5CYII=') !important;
+		> button {
+			background-color: lighten(@background, 1%) !important;
+			color: @foreground !important;
+			border-color: lighten(@background, 1%) !important;
+		}
+	}
+}
+
+
+#console {
+	#output {
+		font-size: 1.1rem !important;
+		line-height: 1.1rem !important;
+		*,
+		*::-moz-tree-cell-text {
+			font-size: 1.1rem !important;
+			line-height: 1.1rem !important;
+			opacity: 1 !important;
+			font-family: @fontstack !important;
+		}
+		> li {
+			&:not(.input) {
+				font-size: 1.1rem !important;
+				line-height: 1.1rem !important;
+			}
+			&:before {
+				font-size: 1.0rem !important;
+				line-height: 1.0rem !important;
+			}
+			.message li.complex-format ul {
+				font-size: 1.0rem !important;
+			}
+		}
+	}
+}
