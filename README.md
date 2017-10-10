@@ -1,4 +1,4 @@
-# Winify-Dark-Monokai
+# K11 Winify Dark - Monokai
 A K11 dark Windows 10/Spotify skin with a Monokai color-scheme.
 New in this version.
 
